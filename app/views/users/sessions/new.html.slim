@@ -1,0 +1,29 @@
+.m-grid.m-grid--hor.m-grid--root.m-page
+  #m_login.m-grid__item.m-grid__item--fluid.m-grid.m-grid--hor.m-login.m-login--signin.m-login--2.m-login-2--skin-2[style="background-image: url(/crm/img//bg/bg-3.jpg);"]
+    .m-grid__item.m-grid__item--fluid.m-login__wrapper
+      .m-login__container
+        .m-login__logo
+          a[href="#"]
+            img[src="https://camo.githubusercontent.com/c47917a304a029a2971cd02e67f34cc7c11513aacb77d233f95b5a1df38beb41/68747470733a2f2f6173736574732e6e696d626c6568712e636f2f6c6f676f2f6c696768742f6c6f676f2d6c696768742d746578742d3332302e706e67"]
+        .m-login__signin
+          / = debug flash
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "m-login__form m-form"} ) do |f|
+            - if flash[:alert].present?
+              .alert.alert-danger.alert-dismissible.fade.show[role="alert"]
+                button.close[type="button" data-dismiss="alert" aria-label="Close"]
+                strong
+                  | Oh snap! &nbsp;
+                = flash[:alert]
+            - else
+              - if flash[:notice].present?
+                .alert.alert-success.alert-dismissible.fade.show[role="alert"]
+                  button.close[type="button" data-dismiss="alert" aria-label="Close"]
+                  strong
+                    | Well done! &nbsp;
+                  = flash[:notice]
+            .form-group.m-form__group
+              = f.input_field :email, class: 'form-control m-input', placeholder: "Email"
+            .form-group.m-form__group
+              = f.input_field :password, class: 'form-control m-input', placeholder: "Password"
+            .m-login__form-action
+              = f.button :submit, "LOGIN", class: 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary'
