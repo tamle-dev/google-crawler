@@ -22,8 +22,8 @@
                     | Well done! &nbsp;
                   = flash[:notice]
             .form-group.m-form__group
-              = f.input_field :email, class: 'form-control m-input', placeholder: "Email"
+              = f.input_field :email, class: 'form-control m-input', placeholder: "Email", value: "admin@nimblehq.co"
             .form-group.m-form__group
-              = f.input_field :password, class: 'form-control m-input', placeholder: "Password"
+              = f.input_field :password, class: 'form-control m-input', placeholder: "Password", value: "123456"
             .m-login__form-action
               = f.button :submit, "LOGIN", class: 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary'
