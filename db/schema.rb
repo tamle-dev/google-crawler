@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_152030) do
+ActiveRecord::Schema.define(version: 2021_08_09_153203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,32 @@ ActiveRecord::Schema.define(version: 2021_08_08_152030) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_attachments_on_user_id"
+  end
+
+  create_table "keyword_details", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.text "url"
+    t.string "domain"
+    t.integer "position"
+    t.integer "keyword_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keyword_id"], name: "index_keyword_details_on_keyword_id"
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string "value"
+    t.integer "total_adword"
+    t.integer "total_url"
+    t.integer "total_result"
+    t.integer "total_result_time"
+    t.text "page_resource"
+    t.integer "attachment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachment_id"], name: "index_keywords_on_attachment_id"
+    t.index ["value"], name: "index_keywords_on_value"
   end
 
   create_table "users", force: :cascade do |t|
