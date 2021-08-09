@@ -4,9 +4,15 @@ Rails.application.routes.draw do
 
   root 'dashboards#index'
 
+  namespace :api do
+    get :version, to: 'application#version'
+    
+    namespace :v1 do
+      post 'attachments', to: 'create_attachment#call'
+    end
+  end
+
   scope '/' do
     resources :dashboards
   end
-
-  get :version, to: 'application#version'
 end
