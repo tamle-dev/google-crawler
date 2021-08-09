@@ -1,3 +1,5 @@
+## Overview
+This web application will extract large amounts of data from the Google search results page.
 ## System Dependencies
 - Ruby 2.6.2
 - Rails 5.2.6
