@@ -7,7 +7,6 @@
             img[src="https://camo.githubusercontent.com/c47917a304a029a2971cd02e67f34cc7c11513aacb77d233f95b5a1df38beb41/68747470733a2f2f6173736574732e6e696d626c6568712e636f2f6c6f676f2f6c696768742f6c6f676f2d6c696768742d746578742d3332302e706e67"]
           .m-login__signin
             / = debug flash
-            / form.m-login__form.m-form[action=""]
             = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "m-login__form m-form"} ) do |f|
               - if flash[:alert].present?
                 .alert.alert-danger.alert-dismissible.fade.show[role="alert"]
@@ -28,41 +27,12 @@
                 = f.input_field :password, class: 'form-control m-input', placeholder: "Password"
               .form-group.m-form__group
                 = f.input_field :password_confirmation, class: 'form-control m-input', placeholder: "Confirm Password"
-              .row.form-group.m-form__group.m-login__form-sub
-                .col.m--align-left
-                  label.m-checkbox.m-checkbox--focus
-                    input[type="checkbox" name="agree"]
-                    | I Agree the 
-                    a.m-link.m-link--focus[href="#"]
-                      | terms and conditions
-                    | . 
-                    span
-                  span.m-form__help
-              .m-login__form-action
               .m-login__form-action
                 = f.button :submit, "SIGN UP", class: 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn'
                 |    
-                button#m_login_signup_cancel.btn.btn-outline-focus.m-btn.m-btn--pill.m-btn--custom.m-login__btn
-                  | Back to Sign In
-        / .m-login__signin
-        /   / = debug flash
-        /   = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "m-login__form m-form"} ) do |f|
-        /     - if flash[:alert].present?
-        /       .alert.alert-danger.alert-dismissible.fade.show[role="alert"]
-        /         button.close[type="button" data-dismiss="alert" aria-label="Close"]
-        /         strong
-        /           | Oh snap! &nbsp;
-        /         = flash[:alert]
-        /     - else
-        /       - if flash[:notice].present?
-        /         .alert.alert-success.alert-dismissible.fade.show[role="alert"]
-        /           button.close[type="button" data-dismiss="alert" aria-label="Close"]
-        /           strong
-        /             | Well done! &nbsp;
-        /           = flash[:notice]
-        /     .form-group.m-form__group
-        /       = f.input_field :email, class: 'form-control m-input', placeholder: "Email", value: "admin@nimblehq.co"
-        /     .form-group.m-form__group
-        /       = f.input_field :password, class: 'form-control m-input', placeholder: "Password", value: "123456"
-        /     .m-login__form-action
-        /       = f.button :submit, "LOGIN", class: 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary'
+              .m-login__account
+                span.m-login__account-msg
+                  |  Already have account ? 
+                |    
+                a.m-link.m-link--light.m-login__account-link href="#{new_user_session_path}"
+                  | Sign In
