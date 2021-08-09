@@ -104,6 +104,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # A Ruby gem to load environment variables from `.env`
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.1'
 
+# Parse json
+gem 'oj', '~> 3.7', '>= 3.7.11'
+
 # Model helpers
 gem 'enumerize', '~> 2.2', '>= 2.2.2'
 gem 'file_validators', '~> 2.3'

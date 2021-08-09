@@ -1,5 +1,5 @@
 #
-class Api::V1::CreateAttachmentController < ::ActionController::API
+class Api::V1::CreateAttachmentController < ::Api::ApplicationController
   def call
     attachment = Attachment.new permitted_params
 
