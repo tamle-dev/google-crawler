@@ -1,4 +1,6 @@
 class Attachment < ApplicationRecord
+  include AttachmentStatusEnum
+
   mount_uploader :file, BaseUploader
 
   belongs_to :owner, polymorphic: true, optional: true
