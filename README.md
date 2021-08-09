@@ -1,8 +1,8 @@
 ## System Dependencies
-- Ruby: Version 2.6.2
-- Rails Version 5.2.6
-- PostgreSQL: Database Management System (DBMS) used for this particular project
-- Google Cloud Storage: Store upload files
+- Ruby 2.6.2
+- Rails 5.2.6
+- PostgreSQL
+- Google Cloud Storage
 ## Setup & Configuration
 1. Install PostgresSQL
 ```
