@@ -1,0 +1,50 @@
+= render 'user/shared/crud/show', resource: @resource do
+  table.table.table-bordered
+    tr
+      td style="width: 30%"
+        | VALUE
+      td
+        = @resource.value
+    tr
+      td style="width: 30%"
+        | TOTAL ADWORD
+      td
+        = @resource.total_adword
+    tr
+      td style="width: 30%"
+        | TOTAL URL
+      td
+        = @resource.total_url
+    tr
+      td style="width: 30%"
+        | TOTAL RESULT
+      td
+        = @resource.total_result_text
+    tr
+      td style="width: 30%"
+        | TOTAL RESULT TIME
+      td
+        = @resource.total_result_time_text
+    tr
+      td style="width: 30%"
+        | PREVIEW
+      td
+        a href="#{@resource.result_html_file_url}" target='_blank'
+          | Download
+
+  table.table.table-bordered.m-table.m-table--border-brand.m-table--head-bg-brand
+    thead
+      tr
+        th POSITION
+        th TITLE
+        th DESCRIPTION
+        th URL
+    tbody
+      - @resource.keyword_details.each do |keyword_detail|
+        tr
+          th = keyword_detail.position
+          td = keyword_detail.title
+          td = keyword_detail.description
+          td 
+            = "#{keyword_detail.url} #{keyword_detail.domain}"
+          

@@ -17,5 +17,8 @@ Rails.application.routes.draw do
 
     resources :attachments
     resources :user_form_attachments, path: :attachments
+
+    resources :keywords
+    resources :user_form_keywords, path: :keywords
   end
 end

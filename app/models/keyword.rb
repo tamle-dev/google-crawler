@@ -14,4 +14,16 @@ class Keyword < ApplicationRecord
            to: :result_html,
            prefix: true,
            allow_nil: true
+
+  def total_result_text
+    "#{total_result.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
+  end
+
+  def total_result_time_text
+    "#{total_result_time_in_second.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1.').reverse} seconds"
+  end
+
+  def total_result_time_in_second
+    total_result_time.to_f / 1000
+  end
 end
