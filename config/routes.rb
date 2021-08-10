@@ -14,5 +14,8 @@ Rails.application.routes.draw do
 
   scope '/' do
     resources :dashboards
+
+    resources :attachments
+    resources :user_form_attachments, path: :attachments
   end
 end

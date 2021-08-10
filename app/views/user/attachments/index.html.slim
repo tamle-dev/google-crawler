@@ -1,0 +1,70 @@
+/ - content_for :filter do
+  / = render 'crm/shared/filter' do |f|
+  /   .row.m--margin-bottom-20
+  /     .col-lg-1.m--margin-bottom-10-tablet-and-mobile
+  /       = f.input :id_eq, label: 'ID', input_html: { class: 'form-control m-input' }
+  /     .col-lg-5.m--margin-bottom-10-tablet-and-mobile
+  /       = f.input :name_cont, label: 'Name', input_html: { class: 'form-control m-input' }
+  /     .col-lg-3.m--margin-bottom-10-tablet-and-mobile
+  /       = f.input :category_id_in, label: 'Category', input_html: { class: "form-control m-bootstrap-select m_selectpicker", "data-live-search" => "true"}, collection: Category.all, as: :select
+  /     .col-lg-3.m--margin-bottom-10-tablet-and-mobile
+  /       = f.input :supplier_id_in, label: 'Supplier', input_html: { class: "form-control m-bootstrap-select m_selectpicker", "data-live-search" => "true"}, collection: Supplier.all, as: :select
+
+= render 'user/shared/crud/index', collection: @collection do
+  .m-section
+    .m-section__content
+      table.table.m-table.m-table--head-bg-brand
+        thead
+          tr
+            th #
+            th NAME
+            th CREATED AT
+            th STATUS
+            th
+        tbody
+          - @collection.each_with_index do |resource, idx|
+            tr
+              td
+                b
+                  = idx + 1
+              td
+                = resource.file_name
+              td
+                = format_datetime resource.created_at.localtime
+              td
+                - case resource.status
+                - when 'completed'
+                  span.m-badge.m-badge--success.m-badge--wide.m-badge--rounded #{resource.status}
+                - when 'pending'
+                  span.m-badge.m-badge--warning.m-badge--wide.m-badge--rounded #{resource.status}
+              td
+                a href="#{resource.file_url}" target='_blank'
+                  | Download
+                  / ====================================================================
+  / .m-section
+  /   .m-section__content
+  /     table.m-table.m-table--head-bg-brand
+  /       thead
+  /         tr
+  /           th
+  /             | ID
+  /           th
+  /             | Name
+  /           th
+  /             | Status
+  /       tbody
+  /         - @collection.each do |resource|
+  /           tr
+  /             td
+  /               = resource.id
+  /             td
+  /               = resource.file_name
+  /             td
+  /               - case resource.status
+  /               - when 'active'
+  /                 span.m-badge.m-badge--success.m-badge--wide.m-badge--rounded #{resource.status}
+  /               - when 'deactivate'
+  /                 span.m-badge.m-badge--warning.m-badge--wide.m-badge--rounded #{resource.status}
+              / td
+              /   a.btn.btn-outline-info.m-btn.m-btn--icon.btn-sm.m-btn--icon-only.m-btn--pill href="#{crm_product_path(resource)}"
+              /     i.fa.flaticon-eye

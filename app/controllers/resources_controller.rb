@@ -9,13 +9,12 @@ class ResourcesController < ApplicationController
                 :resource_path
 
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  before_action :set_authorization
   before_action :set_act_by, only: [:update, :create, :destroy]
   before_action :set_default_filters, only: :index
 
   def index
     @q = (index_collection || klass).ransack(params[:q])
-    @collection = paging @q.result(distinct: true).order(id: :asc)
+    @collection = @q.result(distinct: true).order(id: :asc)
     respond_with @collection
   end
 
@@ -92,11 +91,11 @@ class ResourcesController < ApplicationController
   end
 
   def form_klass
-    "CrmForm::#{klass_constantize}".constantize
+    "UserForm::#{klass_constantize}".constantize
   end
 
   def creator_klass
-    "CrmService::#{klass_constantize}::Creator".constantize
+    "#{klass_constantize}Service::Creator".constantize
   end
 
   def updater_klass
@@ -108,19 +107,19 @@ class ResourcesController < ApplicationController
   end
 
   def collection_path
-    send("crm_#{klass_plural_name}_path")
+    send("#{klass_plural_name}_path")
   end
 
   def resource_path
-    send("crm_#{klass_name}_path", @resource)
+    send("#{klass_name}_path", @resource)
   end
 
   def new_resource_path
-    send("new_crm_#{klass_name}_path")
+    send("new_#{klass_name}_path")
   end
 
   def edit_resource_path
-    send("edit_crm_#{klass_name}_path", @resource)
+    send("edit_#{klass_name}_path", @resource)
   end
 
   def klass_name
@@ -143,22 +142,9 @@ class ResourcesController < ApplicationController
     @klass_constantize ||= klass.name.constantize
   end
 
-  def set_authorization
-    case action_name
-    when 'edit', 'update'
-      authorize!(:update, @resource || klass_constantize)
-    when 'new', 'create'
-      authorize!(:create, @resource || klass_constantize)
-    when 'destroy'
-      authorize!(:destroy, @resource || klass_constantize)
-    else
-      authorize!(:read, @resource || klass_constantize)
-    end
-  end
-
   def set_act_by
     params[:resource] ||= {}
-    params[:resource][:updated_by] = current_staff.id if action_name == 'update'
-    params[:resource][:created_by] = current_staff.id if action_name == 'create'
+    params[:resource][:updated_by] = current_user.id if action_name == 'update'
+    params[:resource][:created_by] = current_user.id if action_name == 'create'
   end
 end

@@ -21,6 +21,7 @@ module AttachmentService
 
       ::Keyword.import keywords
 
+      update_attachment_status
       craw_keyword_details(keywords)
     end
 
@@ -28,6 +29,10 @@ module AttachmentService
       keywords.each do |keyword|
         KeywordService::Crawler.new(keyword).exec
       end
+    end
+
+    def update_attachment_status
+      AttachmentService::Updater.new(attachment, status: :completed).exec
     end
   end
 end

@@ -1,0 +1,26 @@
+= render 'user/shared/crud/show', resource: @resource do
+  tr
+    td style="width: 30%"
+      | NAME
+    td
+      = @resource.file_name
+  tr
+    td style="width: 30%"
+      | CREATED_AT
+    td
+      = format_datetime @resource.created_at
+  tr
+    td style="width: 30%"
+      | STATUS
+    td
+      - case @resource.status
+      - when 'completed'
+        span.m-badge.m-badge--success.m-badge--wide.m-badge--rounded #{@resource.status}
+      - when 'pending'
+        span.m-badge.m-badge--warning.m-badge--wide.m-badge--rounded #{@resource.status}
+  tr
+    td style="width: 30%"
+      | PREVIEW
+    td
+      a href="#{@resource.file_url}" target='_blank'
+        | Download
