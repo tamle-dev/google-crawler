@@ -6,7 +6,6 @@ class CreateKeywords < ActiveRecord::Migration[5.2]
       t.integer :total_url
       t.integer :total_result
       t.integer :total_result_time
-      t.text :page_resource
       t.integer :keyword_attachment_id
       t.integer :html_attachment_id
 

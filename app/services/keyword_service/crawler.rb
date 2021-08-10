@@ -74,7 +74,6 @@ module KeywordService
         total_url: total_url,
         total_result: total_result,
         total_result_time: total_result_time,
-        page_resource: nil,
         keyword_details_attributes: build_keyword_details
       }
     end
