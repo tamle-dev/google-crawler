@@ -3,7 +3,7 @@ class Attachment < ApplicationRecord
 
   mount_uploader :file, BaseUploader
 
-  belongs_to :owner, polymorphic: true, optional: true
+  belongs_to :user, optional: true
 
   def url
     URI::decode_www_form_component(file.url)
