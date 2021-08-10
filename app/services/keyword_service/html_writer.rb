@@ -23,7 +23,7 @@ module KeywordService
     private
 
     def update_html_attachment(attachment)
-      keyword.update(html_attachment_id: attachment.id)
+      keyword.update(result_attachment_id: attachment.id)
       keyword
     end
   end
