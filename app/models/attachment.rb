@@ -4,6 +4,7 @@ class Attachment < ApplicationRecord
   mount_uploader :file, BaseUploader
 
   belongs_to :user, optional: true
+  has_many :keywords, foreign_key: :keyword_attachment_id
 
   def url
     URI::decode_www_form_component(file.url)
