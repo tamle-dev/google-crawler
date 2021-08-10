@@ -17,6 +17,7 @@ module KeywordService
       @doc = Nokogiri::HTML.parse(browser.html)
 
       update_keyword
+      store_html_file
     end
 
     private
@@ -80,6 +81,10 @@ module KeywordService
 
     def update_keyword
       KeywordService::Updater.new(keyword, build_keyword_update_params).exec
+    end
+
+    def store_html_file
+      KeywordService::HtmlWriter.new(keyword, @doc).exec
     end
   end
 end

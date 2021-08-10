@@ -16,7 +16,7 @@ module AttachmentService
 
       keywords = []
       CSV.new(open(attachment_url)).each do |keyword|
-        keywords << ::Keyword.new(value: keyword.first, attachment_id: attachment.id)
+        keywords << ::Keyword.new(value: keyword.first, keyword_attachment_id: attachment.id)
       end
 
       ::Keyword.import keywords

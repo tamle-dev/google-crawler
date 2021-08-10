@@ -43,10 +43,12 @@ ActiveRecord::Schema.define(version: 2021_08_09_153203) do
     t.integer "total_result"
     t.integer "total_result_time"
     t.text "page_resource"
-    t.integer "attachment_id"
+    t.integer "keyword_attachment_id"
+    t.integer "html_attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attachment_id"], name: "index_keywords_on_attachment_id"
+    t.index ["html_attachment_id"], name: "index_keywords_on_html_attachment_id"
+    t.index ["keyword_attachment_id"], name: "index_keywords_on_keyword_attachment_id"
     t.index ["value"], name: "index_keywords_on_value"
   end
 

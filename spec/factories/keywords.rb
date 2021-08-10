@@ -6,6 +6,7 @@ FactoryBot.define do
     total_result { 1 }
     total_result_time { 1 }
     page_resource { "MyText" }
-    attachment_id { 1 }
+    keyword_attachment_id { 1 }
+    html_attachment_id { 1 }
   end
 end
