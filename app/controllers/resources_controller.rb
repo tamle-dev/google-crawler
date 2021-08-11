@@ -28,8 +28,6 @@ class ResourcesController < ApplicationController
       flash[:notice] = I18n.t('flash.actions.create.notice', resource_name: @resource.model_name.human)
       respond_to do |format|
         format.html { redirect_to resource_path }
-        format.js { js_redirect_to resource_path }
-        format.json { render json: serializer.new(@resource, root: :data), status: :created }
       end
     else
       flash[:alert] = I18n.t('flash.actions.create.alert', resource_name: @resource.model_name.human)
@@ -43,33 +41,6 @@ class ResourcesController < ApplicationController
 
   def new
     @resource = (form_klass || klass).new
-  end
-
-  def edit
-  end
-
-  def update
-    @resource.assign_attributes(permitted_params)
-    if @resource.valid?
-      updater_klass.new(klass.find(params[:id]), permitted_params).exec
-      flash[:notice] = I18n.t('flash.actions.update.notice', resource_name: @resource.model_name.human)
-      respond_to do |format|
-        format.html { redirect_to resource_path }
-        format.js { js_redirect_to resource_path }
-      end
-    else
-      flash[:alert] = I18n.t('flash.actions.update.alert', resource_name: @resource.model_name.human)
-      render :edit
-    end
-  end
-
-  def destroy
-    destroyer_klass.new(@resource).exec
-    flash[:alert] = I18n.t('flash.actions.destroy.notice', resource_name: @resource.model_name.human)
-    respond_to do |format|
-      format.html { redirect_to collection_path }
-      format.js { js_redirect_to collection_path }
-    end
   end
 
   protected
@@ -98,14 +69,6 @@ class ResourcesController < ApplicationController
     "#{klass_constantize}Service::Creator".constantize
   end
 
-  def updater_klass
-    "CrmService::#{klass_constantize}::Updater".constantize
-  end
-
-  def destroyer_klass
-    "CrmService::#{klass_constantize}::Destroyer".constantize
-  end
-
   def collection_path
     send("#{klass_plural_name}_path")
   end
@@ -128,10 +91,6 @@ class ResourcesController < ApplicationController
 
   def klass_plural_name
     @klass_plural_name ||= klass.name.pluralize.underscore
-  end
-
-  def serializer
-    CrmSerializer::Resource
   end
 
   def set_resource
