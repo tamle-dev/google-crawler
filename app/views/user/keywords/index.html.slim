@@ -53,10 +53,10 @@
                     td = keyword.total_result_text
                     td = keyword.total_result_time_text
                     td
-                      - if keyword.result_html_file_url
+                      - if keyword.crawled?
                         a href="#{keyword.result_html_file_url}" target='_blank'
                           | Download
                     td
-                      - if keyword.result_html_file_url
+                      - if keyword.crawled?
                         a href="#{keyword_path(keyword)}"
                           i.fa.flaticon-eye

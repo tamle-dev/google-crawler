@@ -1,5 +1,5 @@
 class Keyword < ApplicationRecord
-  has_many :keyword_details
+  has_many :keyword_details, -> { order('position asc') }
   belongs_to :keyword_csv, class_name: 'Attachment', foreign_key: :keyword_attachment_id, optional: true
   belongs_to :result_html, class_name: 'Attachment', foreign_key: :result_attachment_id, optional: true
 
