@@ -18,6 +18,7 @@ module AttachmentService
     private
 
     def read_attachment(attachment)
+      # Job::AttachmentReader.perform_later(attachment.id)
       AttachmentService::Reader.new(attachment).exec
     end
   end

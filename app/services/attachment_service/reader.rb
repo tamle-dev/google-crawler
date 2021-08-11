@@ -27,7 +27,7 @@ module AttachmentService
 
     def craw_keyword_details(keywords)
       keywords.each do |keyword|
-        KeywordService::Crawler.new(keyword).exec
+        Job::KeywordCrawler.perform_later(keyword.id)
       end
     end
 

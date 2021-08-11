@@ -10,7 +10,6 @@ module KeywordService
     end
 
     def exec
-      # headless: true
       browser = Watir::Browser.new(:firefox)
       browser.goto "https://www.google.com/search?q=#{normalized_keyword}"
 
