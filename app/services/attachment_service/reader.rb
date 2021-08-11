@@ -26,9 +26,7 @@ module AttachmentService
     end
 
     def craw_keyword_details(keywords)
-      keywords.each do |keyword|
-        Job::KeywordCrawler.perform_later(keyword.id)
-      end
+      Job::KeywordCrawler.perform_later(keywords.map(&:id))
     end
 
     def update_attachment_status

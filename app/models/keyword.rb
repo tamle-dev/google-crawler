@@ -26,4 +26,8 @@ class Keyword < ApplicationRecord
   def total_result_time_in_second
     total_result_time.to_f / 1000
   end
+
+  def crawled?
+    !result_attachment_id.nil?
+  end
 end

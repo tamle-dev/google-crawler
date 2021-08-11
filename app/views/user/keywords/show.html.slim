@@ -39,12 +39,14 @@
         th TITLE
         th DESCRIPTION
         th URL
+        th DOMAIN
     tbody
       - @resource.keyword_details.each do |keyword_detail|
         tr
           th = keyword_detail.position
           td = keyword_detail.title
           td = keyword_detail.description
+          td style="word-break: break-word;"
+            = "#{keyword_detail.url}"
           td 
-            = "#{keyword_detail.url} #{keyword_detail.domain}"
-          
+            = "#{keyword_detail.domain}"

@@ -1,11 +1,11 @@
-# Job::KeywordCrawler.perform_later(keyword_id)
+# Job::KeywordCrawler.perform_later(keyword_ids)
 module Job
   class KeywordCrawler < Job::Application
-    def perform(keyword_id)
-      keyword = ::Keyword.find_by(id: keyword_id)
-      return unless keyword
+    def perform(keyword_ids)
+      keywords = ::Keyword.where(id: keyword_ids)
+      return unless keywords
 
-      KeywordService::Crawler.new(keyword).exec
+      KeywordService::Crawler.new(keywords).exec
     end
   end
 end
