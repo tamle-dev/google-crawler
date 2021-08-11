@@ -5,8 +5,8 @@ module UserService
     ISS       = 'https://nimblehq.com'.freeze
 
     def self.issue(user, options = {})
-      iat = Time.zone.now.to_i
-      exp = Time.zone.now.to_i + ENV['JWT_TTL'].to_i
+      iat = (options[:iat] || Time.zone.now).to_i
+      exp = (options[:exp] || Time.zone.now.to_i + ENV['JWT_TTL'].to_i).to_i
 
       payload = {
         sub: user.id,
