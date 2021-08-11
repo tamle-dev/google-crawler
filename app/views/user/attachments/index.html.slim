@@ -5,46 +5,43 @@
         = f.input :id_eq, label: 'ID', input_html: { class: 'form-control m-input' }, required: false
 
 = render 'user/shared/crud/index', collection: @collection do
-  .m-content
-    .row
-      .col-xl-12
-        .m-portlet
-          .m-portlet__head
-            .m-portlet__head-caption
-              .m-portlet__head-title
-                h3.m-portlet__head-text
-                  = "CSV"
-          .m-portlet__body
-            .m-section
-              .m-section__content
-                table.table.table-bordered.m-table.m-table--border-brand.m-table--head-bg-brand
-                  thead
-                    tr
-                      th #
-                      th NAME
-                      th CREATED AT
-                      th STATUS
-                      th
-                      th
-                  tbody
-                    - @collection.each_with_index do |resource, idx|
-                      tr
-                        td
-                          b
-                            = idx + 1
-                        td
-                          = resource.file_name
-                        td
-                          = format_datetime resource.created_at.localtime
-                        td
-                          - case resource.status
-                          - when 'completed'
-                            span.m-badge.m-badge--success.m-badge--wide.m-badge--rounded #{resource.status}
-                          - when 'pending'
-                            span.m-badge.m-badge--warning.m-badge--wide.m-badge--rounded #{resource.status}
-                        td
-                          a href="#{resource.file_url}" target='_blank'
-                            | Download
-                        td
-                          a href="#{attachment_path(resource)}"
-                            i.fa.flaticon-eye
+  .m-portlet
+    .m-portlet__head
+      .m-portlet__head-caption
+        .m-portlet__head-title
+          h3.m-portlet__head-text
+            = "CSV"
+    .m-portlet__body
+      .m-section
+        .m-section__content
+          table.table.table-bordered.m-table.m-table--border-brand.m-table--head-bg-brand
+            thead
+              tr
+                th #
+                th NAME
+                th CREATED AT
+                th STATUS
+                th
+                th
+            tbody
+              - @collection.each_with_index do |resource, idx|
+                tr
+                  td
+                    b
+                      = idx + 1
+                  td
+                    = resource.file_name
+                  td
+                    = format_datetime resource.created_at.localtime
+                  td
+                    - case resource.status
+                    - when 'completed'
+                      span.m-badge.m-badge--success.m-badge--wide.m-badge--rounded #{resource.status}
+                    - when 'pending'
+                      span.m-badge.m-badge--warning.m-badge--wide.m-badge--rounded #{resource.status}
+                  td
+                    a href="#{resource.file_url}" target='_blank'
+                      | Download
+                  td
+                    a href="#{attachment_path(resource)}"
+                      i.fa.flaticon-eye
