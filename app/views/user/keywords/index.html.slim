@@ -1,0 +1,62 @@
+- can_create = false
+- content_for :filter do
+  = render 'user/shared/filter' do |f|
+    .row.m--margin-bottom-20
+      .col-lg-2.m--margin-bottom-10-tablet-and-mobile
+        = f.input :id_eq, label: 'ID', input_html: { class: 'form-control m-input' }, required: false
+      .col-lg-10.m--margin-bottom-10-tablet-and-mobile
+        = f.input :value_cont, label: 'Value', input_html: { class: 'form-control m-input' }, required: false
+    .row.m--margin-bottom-20
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_adword_gteq, label: 'Total adword', input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Greater than or equal'
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_url_gteq, label: 'Total URL', input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Greater than or equal'
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_result_gteq, label: 'Total result', input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Greater than or equal'
+    .row.m--margin-bottom-20
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_adword_lteq, label: false, input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Less than or equal'
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_url_lteq, label: false, input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Less than or equal'
+      .col-lg-4.m--margin-bottom-10-tablet-and-mobile
+        = f.input :total_result_lteq, label: false, input_html: { class: 'form-control m-input' }, required: false, placeholder: 'Less than or equal'
+
+= render 'user/shared/crud/index', collection: @collection, can_create: can_create do
+  - @collection.group_by { |k| k[:keyword_attachment_id] }.each do |keyword_attachment_id, keywords|
+    .m-portlet
+      .m-portlet__head
+        .m-portlet__head-caption
+          .m-portlet__head-title
+            h3.m-portlet__head-text
+              = "ATTACHMENT \##{keyword_attachment_id}"
+      .m-portlet__body
+        .m-section
+          .m-section__content
+            table.table.table-bordered.m-table.m-table--border-brand.m-table--head-bg-brand
+              thead
+                tr
+                  th #
+                  th VALUE
+                  th TOTAL ADWORD
+                  th TOTAL URL
+                  th TOTAL RESULT
+                  th TOTAL RESULT TIME
+                  th
+                  th
+              tbody
+                - keywords.each_with_index do |keyword, idx|
+                  tr
+                    th = idx + 1
+                    td = keyword.value
+                    td = keyword.total_adword
+                    td = keyword.total_url
+                    td = keyword.total_result_text
+                    td = keyword.total_result_time_text
+                    td
+                      - if keyword.crawled?
+                        a href="#{keyword.result_html_file_url}" target='_blank'
+                          | Download
+                    td
+                      - if keyword.crawled?
+                        a href="#{keyword_path(keyword)}"
+                          i.fa.flaticon-eye

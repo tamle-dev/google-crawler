@@ -5,8 +5,7 @@
 
 .m-portlet
   .m-portlet__body
-    table.table.table-bordered
-      = yield
+    = yield
     .m-portlet__foot.m-portlet__no-border.m-portlet__foot--fit
     .m-form__actions.m-form__actions--solid
       .row
@@ -14,5 +13,3 @@
           a.button.btn.btn-secondary href="#{collection_path}"
             | Back
           | &nbsp;
-          a.button.btn.btn-success href="#{edit_resource_path}"
-            | Edit

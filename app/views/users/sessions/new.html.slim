@@ -22,8 +22,14 @@
                     | Well done! &nbsp;
                   = flash[:notice]
             .form-group.m-form__group
-              = f.input_field :email, class: 'form-control m-input', placeholder: "Email", value: "admin@nimblehq.co"
+              = f.input_field :email, class: 'form-control m-input', placeholder: "Email"
             .form-group.m-form__group
-              = f.input_field :password, class: 'form-control m-input', placeholder: "Password", value: "123456"
+              = f.input_field :password, class: 'form-control m-input', placeholder: "Password"
             .m-login__form-action
               = f.button :submit, "LOGIN", class: 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary'
+            .m-login__account
+              span.m-login__account-msg
+                |  Don't have an account yet ? 
+              |    
+              a.m-link.m-link--light.m-login__account-link href="#{new_user_registration_path}"
+                | Sign Up

@@ -18,6 +18,7 @@ module GoogleCrawler
 
     config.to_prepare do
       Devise::SessionsController.layout "user_auth"
+      Devise::RegistrationsController.layout "user_auth"
     end
   end
 end
