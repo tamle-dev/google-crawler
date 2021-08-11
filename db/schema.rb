@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_08_09_153203) do
     t.string "value"
     t.integer "total_adword"
     t.integer "total_url"
-    t.integer "total_result"
+    t.bigint "total_result"
     t.integer "total_result_time"
     t.integer "keyword_attachment_id"
     t.integer "result_attachment_id"

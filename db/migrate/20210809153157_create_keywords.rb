@@ -4,7 +4,7 @@ class CreateKeywords < ActiveRecord::Migration[5.2]
       t.string :value
       t.integer :total_adword
       t.integer :total_url
-      t.integer :total_result
+      t.bigint :total_result
       t.integer :total_result_time
       t.integer :keyword_attachment_id
       t.integer :result_attachment_id
