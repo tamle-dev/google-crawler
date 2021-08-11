@@ -16,10 +16,14 @@ class Keyword < ApplicationRecord
            allow_nil: true
 
   def total_result_text
+    return unless total_result
+
     "#{total_result.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse}"
   end
 
   def total_result_time_text
+    return unless total_result_time
+    
     "#{total_result_time_in_second.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1.').reverse} seconds"
   end
 
