@@ -5,6 +5,8 @@ This web application will extract large amounts of data from the Google search r
 - Rails 5.2.6
 - PostgreSQL
 - Google Cloud Storage
+- Sidekiq
+- Redis
 ## Setup & Configuration
 1. Install PostgresSQL
 ```
@@ -37,7 +39,7 @@ rails c
 1. Access http://localhost:3000
 2. Default email & password
 ```
-admin@nimblehq.co
+tamle.dev@outlook.com
 123456
 ```
 3. Upload file csv

@@ -1,4 +1,4 @@
 unless User.exists?
   p 'Import User.........'
-  User.create(email: 'admin@nimblehq.co', password: '123456')
+  User.create(email: 'tamle.dev@outlook.com', password: '123456')
 end
