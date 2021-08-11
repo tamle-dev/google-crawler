@@ -6,9 +6,14 @@ Rails.application.routes.draw do
 
   namespace :api do
     get :version, to: 'application#version'
-    
+
     namespace :v1 do
+      post 'users/login', to: 'login#call'
+
       post 'attachments', to: 'create_attachment#call'
+
+      get 'keywords', to: 'get_keywords#call'
+      get 'keywords/:id', to: 'get_keyword#call'
     end
   end
 
