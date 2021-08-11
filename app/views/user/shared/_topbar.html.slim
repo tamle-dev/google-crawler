@@ -4,7 +4,7 @@
       li.m-nav__item.m-topbar__user-profile.m-topbar__user-profile--img.m-dropdown.m-dropdown--medium.m-dropdown--arrow.m-dropdown--header-bg-fill.m-dropdown--align-right.m-dropdown--mobile-full-width.m-dropdown--skin-light[m-dropdown-toggle="click"]
         a.m-nav__link.m-dropdown__toggle[href="#"]
           span.m-topbar__userpic
-            img.m--img-rounded.m--marginless[src="/crm/img/avatar.jpg" alt=""]
+            img.m--img-rounded.m--marginless[src="/crm/img/nimblehq-ava.png" alt=""]
           span.m-topbar__username.m--hide
             | Nick
         .m-dropdown__wrapper
@@ -13,7 +13,7 @@
             .m-dropdown__header.m--align-center[style="background: url(/crm/img/misc/user_profile_bg.jpg); background-size: cover;"]
               .m-card-user.m-card-user--skin-dark
                 .m-card-user__pic
-                  img.m--img-rounded.m--marginless[src="/crm/img/avatar.jpg" alt=""]
+                  img.m--img-rounded.m--marginless[src="/crm/img/nimblehq-ava.png" alt=""]
                 .m-card-user__details
                   span.m-card-user__name.m--font-weight-500
                     = current_user.email
@@ -22,13 +22,13 @@
             .m-dropdown__body
               .m-dropdown__content
                 ul.m-nav.m-nav--skin-light
-                  li.m-nav__item
-                    a.m-nav__link[href="header/profile.html"]
-                      i.m-nav__link-icon.flaticon-profile-1
-                      span.m-nav__link-title
-                        span.m-nav__link-wrap
-                          span.m-nav__link-text
-                            | Change password
+                  / li.m-nav__item
+                  /   a.m-nav__link[href="header/profile.html"]
+                  /     i.m-nav__link-icon.flaticon-profile-1
+                  /     span.m-nav__link-title
+                  /       span.m-nav__link-wrap
+                  /         span.m-nav__link-text
+                  /           | Change password
                   li.m-nav__separator.m-nav__separator--fit
                   li.m-nav__item
                     = link_to destroy_user_session_path, method: :delete, class: 'btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder' do

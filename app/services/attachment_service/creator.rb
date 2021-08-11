@@ -1,4 +1,4 @@
-# Attachment::Creator.new(params).exec
+# AttachmentService::Creator.new(params).exec
 module AttachmentService
   class Creator
     attr_reader :params

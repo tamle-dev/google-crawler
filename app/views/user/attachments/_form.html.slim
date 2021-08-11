@@ -1,8 +1,9 @@
 .m-portlet__body
   .m-form__section.m-form__section--first
     .form-group.m-form__group.row
-      .col-lg-6
-        = f.input :file
+      .col-lg-12
+        .custom-file
+          = f.input :file, input_html: {class: 'form-control-file'}
 
 .m-portlet__foot.m-portlet__no-border.m-portlet__foot--fit
   .m-form__actions.m-form__actions--solid
@@ -12,10 +13,3 @@
           | Reset
         | &nbsp;
         = f.button :submit, "Save", class: "btn btn-primary"
-
-/ = content_for :javascript_inline do
-/   javascript:
-/     window.nestedFormEvents.insertFields = function(content, assoc, link) {
-/       var target = $(link).data('target');
-/       return $(content).appendTo($(target));
-/     }

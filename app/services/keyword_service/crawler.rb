@@ -32,8 +32,8 @@ module KeywordService
       pattern = /([0-9\.|\,]+)/
       matcher = result_str.scan(pattern)
 
-      total_result      = matcher[0][0].gsub('.','').to_i
-      total_result_time = matcher[1][0].gsub(',','.').to_f * 1000 #milisecond
+      total_result      = matcher[0][0].gsub(',','').to_i
+      total_result_time = matcher[1][0].to_f * 1000 #milisecond
 
       return total_result, total_result_time
     end
@@ -70,10 +70,10 @@ module KeywordService
       total_result, total_result_time = normalized_result
 
       {
-        total_adword: total_adword,
-        total_url: total_url,
-        total_result: total_result,
-        total_result_time: total_result_time,
+        total_adword:               total_adword,
+        total_url:                  total_url,
+        total_result:               total_result,
+        total_result_time:          total_result_time,
         keyword_details_attributes: build_keyword_details
       }
     end
