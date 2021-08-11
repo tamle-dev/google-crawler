@@ -1,5 +1,5 @@
 ## Overview
-This web application will extract large amounts of data from the Google search results page.
+This web application GCRP will extract large amounts of data from the Google search results page.
 ## System Dependencies
 - Ruby 2.6.2
 - Rails 5.2.6
@@ -35,7 +35,21 @@ rake db:seed
 rails c
 ```
 8. Access http://localhost:3000
-## How to use?
+## API
+1. Login with email & password
+```sh
+POST api/v1/users/login
+```
+2. Upload keywords csv file which want to extract
+```sh
+POST api/v1/attachments
+```
+3. Get keyword and keywords
+```sh
+GET api/v1/keywords
+GET api/v1/keywords/:id
+```
+## How to use on GCRP?
 1. Access http://localhost:3000
 2. Default email & password
 ```
