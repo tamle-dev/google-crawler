@@ -1,9 +1,7 @@
 #
-class Api::V1::CreateAttachmentController < ::Api::ApplicationController
+class Api::V1::CreateAttachmentController < ::Api::AuthController
   def call
-    attachment = Attachment.new permitted_params
-
-    attachment.save
+    attachment = AttachmentService::Creator.new(permitted_params.merge(user_id: current_user_id)).exec
 
     render json: ApiSerializer::Attachment.new(attachment, root: :data), status: :created
   end
