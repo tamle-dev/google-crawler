@@ -1,8 +1,7 @@
 ## Overview
 This web application GCRP will extract large amounts of data from the Google search results page.
 This version only supports uploading csv file, with one keyword per line. Download example file below.
-![](Screen Shot 2021-08-13 at 00.54.45.png)
-![title](screenshots/sign-up.png)
+![title](screenshots/keyword-details.png)
 ## System Dependencies
 - Ruby 2.6.2
 - Rails 5.2.6
@@ -82,4 +81,10 @@ GET api/v1/keyword/:id
 4. View list of keywords
 5. View the search result information for each keyword.
 ## UI
-![ok](/screenshots/Screen Shot 2021-08-13 at 01.05.14.png)
+![title](screenshots/sign-in.png)
+![title](screenshots/sign-up.png)
+![title](screenshots/dashboard.png)
+![title](screenshots/attachments.png)
+![title](screenshots/upload-attachment.png)
+![title](screenshots/keywords.png)
+![title](screenshots/keyword-details.png)
