@@ -1,0 +1,23 @@
+version: "3"
+services:
+  rails:
+    image: us.gcr.io/tradingfoe/backend-ror:latest
+    build:
+      context: ../.
+      dockerfile: ./backend-ror/Dockerfile.test
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
+    env_file:
+      - .env.test.sample
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    links:
+      - db
+      - redis
+  db:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  redis:
+    image: redis:5.0.5-alpine
