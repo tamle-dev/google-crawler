@@ -81,4 +81,4 @@ GET api/v1/keyword/:id
 4. View list of keywords
 5. View the search result information for each keyword.
 ## UI
-![](screenshots/Screen Shot 2021-08-13 at 01.05.14.png)
+![](./screenshots/Screen Shot 2021-08-13 at 01.05.14.png)
