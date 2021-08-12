@@ -21,7 +21,7 @@ services:
     environment:
       # - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_DB=google_crawler_development
-      - POSTGRES_USER=gc_u1
+      - POSTGRES_USER=gcu1
       - POSTGRES_PASSWORD=gcu1sEcRet
     volumes:
       - db-data:/var/lib/postgresql/data
