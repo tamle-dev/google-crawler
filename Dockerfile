@@ -6,21 +6,20 @@ RUN apk update && \
     apk add curl curl-dev libxml2-dev && \
     rm -rf /var/cache/apk/*
 
-RUN curl https://fonts.google.com/download?family=Montserrat --output /usr/share/fonts/font.zip && \
-    mkdir -p /usr/share/fonts/Montserrat && \
-    unzip /usr/share/fonts/font.zip -d /usr/share/fonts/Montserrat
+RUN apk add chromium
+RUN apk add chromium-chromedriver
 
 RUN mkdir /app
 WORKDIR /app
 
-COPY ./backend-ror/Gemfile /app/
-COPY ./backend-ror/Gemfile.lock /app/
+COPY ./Gemfile /app/
+COPY ./Gemfile.lock /app/
+RUN gem update bundler
 RUN bundle install
 
-EXPOSE 80
-ENV PORT 80
+EXPOSE 3000
 
-COPY ./backend-ror /app
+COPY ./ /app
 RUN bundle exec rake assets:precompile
 
 CMD ["./docker-entrypoint.sh"]
