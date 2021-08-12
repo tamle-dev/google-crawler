@@ -1,13 +1,13 @@
 version: "3"
 services:
   rails:
-    image: us.gcr.io/tradingfoe/backend-ror:latest
+    image: tamle:test
     build:
-      context: ../.
-      dockerfile: ./backend-ror/Dockerfile.test
+      context: .
+      dockerfile: ./Dockerfile
     command: bundle exec rails s -p 80 -b '0.0.0.0'
     env_file:
-      - .env.test.sample
+      - .env
     volumes:
       - .:/app
     ports:
