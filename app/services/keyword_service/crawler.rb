@@ -10,7 +10,7 @@ module KeywordService
     end
 
     def exec
-      browser = Watir::Browser.new(:firefox, headless: true)
+      browser = Watir::Browser.new :chrome, args: %w[--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222]
 
       keywords.each do |keyword|
         next if keyword.crawled?
